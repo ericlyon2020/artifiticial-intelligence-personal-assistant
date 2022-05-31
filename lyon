@@ -1,0 +1,65 @@
+// the packages below have to be installed to the terminal using the pip command
+import speech_recognition as sr
+import pyttsx3
+import pywhatkit
+import datetime
+import wikipedia
+import pyjokes 
+
+listener = sr.Recognizer()
+engine = pyttsx3.init()
+voices = engine.getProperty(voices)
+engine.setProperty('voice',voice[1].id)// setting Abi to speak in female voice
+def talk(text):
+
+engine.say('text')
+engine.say('text')
+         engine.runAndwait()
+def take_command():
+   try:
+     with sr.microphone() as source:
+        print('listening...')
+        voice = listener.listen(source)
+       command = listener.recognize_google(voice) 
+       command = command.lower()
+       if 'Abi' in command: // it will only respond if Abi is mentioned
+       command = command.replace('Abi','')
+         
+      print(command)
+    
+except:
+     pass:
+   return command
+
+def run_Abi():
+    command = take_command()
+    print(command)
+     if 'play' in command:
+         song = command.replace('play','')
+         talk('playing'+ song)
+         print('song')
+         pywhatkit.playonyt(song)// you can ask to play any song on youtube
+      elif 'time' in command:
+         time = datetime.now().strftime('%H:%M %p')
+         talk('current time is'+time)
+       elif'who the heck is' in command:
+         person = command.replace('who the hech is', '')// ask about any person well known
+          info  = wikipedia.summary(person, 2)
+          print(info)
+          talk(info)
+       elif 'date' in command:
+        talk('sorry, I have a headache')
+       elif 'are you single' in command:
+        talk('I am in a relationship with Eric')
+       elif 'who created you' in command:
+        talk('I was created by Eric Mugo, this year for his project.Than you')
+       elif 'joke' in command:
+        talk(pyjokes.get_joke())
+       else:
+         talk('I did not get the command please')
+
+while True:
+        run_Abi()
+
+        
+   
